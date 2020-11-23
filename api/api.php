@@ -30,16 +30,9 @@ class API
 
 	function auth()
 	{
-		// $form_data = array(
-		// 	':username' => $_POST['username'],
-		// 	':password' => $_POST['password']
-		// );
 		$login = $_POST["username"];
 		$pass = $_POST["password"];
-		// $query = "SELECT COUNT(*) FROM users WHERE username = :username AND password = :password";
 		$query = "SELECT COUNT(*) FROM users WHERE username = '$login' AND password = '$pass'";
-		// $statement = $this->connect->prepare($query);
-		// $result = $statement->execute($form_data);
 		$stmt = $this->connect->query($query);
 		$count = $stmt->fetchColumn();
 		if($count > 0)
